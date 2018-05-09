@@ -2,6 +2,7 @@
 menu:
   Home: /
   Archives: /archives
+  category: /cateories
 rss: /atom.xml
 
 # Content

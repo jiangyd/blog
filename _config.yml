@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 睡着了去做梦
 subtitle:
-description:
+description: 
 keywords:
-author: John Doe
-language:
+author: 江永道
+language: zh-Hans
 timezone:
 
 # URL
@@ -75,9 +75,16 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+#站内搜索
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/jiangyd/jiangyd.github.io
+  repo: git@github.com:jiangyd/jiangyd.github.io
   branch: master
