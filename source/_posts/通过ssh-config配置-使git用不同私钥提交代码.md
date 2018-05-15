@@ -34,13 +34,13 @@ HOST github.com
   IdentityFile ~/.ssh/github.com
 ```
 
-参数 | 说明
----|---|
-HOST 别名    
-HOSTNAME  主机
-User 用户名
-Port 端口
-IdentityFile 私钥文件   
+参数|说明|
+---|---
+HOST | 别名    
+HOSTNAME | 主机
+User | 用户名
+Port | 端口
+IdentityFile | 私钥文件   
 
 
 
@@ -62,3 +62,9 @@ deploy:
 
 > 这样我就可以在hexo blog项目里面，即可以提交源代码到Github，又可以提交构建部署的代码到Github
 因为部署的github与源代码仓库地址不是一个
+
+
+以上的配置都是太过复杂，为什么会出现这种情况，是因为我把自已电脑的公钥存放到Github项目
+里面了，而不同项目又不能存放同一个公钥，所以才会有我上面的这些设置
+
+那么只要把公钥在Github上面做全局的设置，那么我本地就不用搞这么复杂了
