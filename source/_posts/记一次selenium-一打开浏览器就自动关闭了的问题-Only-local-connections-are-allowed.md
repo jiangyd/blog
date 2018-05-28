@@ -1,5 +1,5 @@
 ---
-title: 记一次selenium 一打开浏览器就自动关闭了的问题( Only local connections are allowed.)
+title: 记一次selenium 一打开浏览器就自动关闭了的问题
 date: 2018-05-23 21:53:24
 tags:
  - selenium
