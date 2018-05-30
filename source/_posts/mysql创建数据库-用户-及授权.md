@@ -5,10 +5,10 @@ tags:
  - mysql
 ---
 
-> 创建数据库
+> 创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功
 
 ```
-mysql> create database testdb default character set utf8 default collate utf8_general_ci;
+mysql> create database  `testdb` default character set utf8 default collate utf8_general_ci;
 Query OK, 1 row affected (0.00 sec)
 ```
 
@@ -24,6 +24,19 @@ Query OK, 0 rows affected (0.04 sec)
 ```
 mysql> GRANT ALL PRIVILEGES ON testdb.* to 'jyd'@'%';
 Query OK, 0 rows affected, 1 warning (0.00 sec)
+```
+> 给某数据库设置只读权限（message_bb）
+
+```
+mysql> GRANT SELECT ON message_bb.* to 'jyd'@'%';
+Query OK, 0 rows affected (0.00 sec)
+```
+
+> 刷新权限
+
+```
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
 ```
 
 > 更改用户密码
