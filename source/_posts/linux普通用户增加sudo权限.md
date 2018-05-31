@@ -12,8 +12,6 @@ tags:
 $ sudo apt-get update
 sudo: unable to resolve host dest1
 [sudo] password for test: 
-Sorry, try again.
-[sudo] password for test: 
 test is not in the sudoers file.  This incident will be reported.
 ```
 
