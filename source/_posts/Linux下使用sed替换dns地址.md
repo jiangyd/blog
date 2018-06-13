@@ -2,7 +2,7 @@
 title: Linux下使用sed替换dns地址
 date: 2018-05-09 11:05:50
 tags:
- － sed
+ - sed
 ---
 
 
