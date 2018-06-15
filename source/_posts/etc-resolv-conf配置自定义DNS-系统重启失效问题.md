@@ -40,3 +40,24 @@ nameserver 192.168.0.244
 ```
 service resolvconf restart
 ```
+
+> 如果想去掉动态的DNS，只保留自己定义的DNS,那么就要设置静态的DNS了
+
+方法1:
+
+```
+# vim /etc/dhcp/dhclient.conf
+supersede domain-name-servers 192.168.0.244;
+```
+
+方法2:
+
+```
+# vim /etc/network/interfaces
+auto eth0
+iface eth0 inet dhcp
+dns-nameservers 192.168.0.244
+```
+
+> 其它系统配置文件及路径可能不同，配置如果没有生效，建议重启系统
+
