@@ -18,7 +18,7 @@ categories:
 ```
 
  
-检测脚本文件是否存在 (这里脚本要写绝对路径)
+检测脚本文件是否存在
 
 ```
 # ls /var/spool/cron/test.sh
