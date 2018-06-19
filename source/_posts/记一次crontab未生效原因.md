@@ -40,7 +40,7 @@ b.txt  root  test.sh
 a
 ```
 
-检测cron服务是否运行中
+检测crond服务是否运行中
 
 ```
 # service crond status
