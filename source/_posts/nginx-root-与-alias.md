@@ -41,7 +41,8 @@ server {
 
 > nginx 中在location中使用root，路径为 root定义的目录(/home)＋访问的目录(/root)+具体文件
 
-在location中使用alias，路径为 root定义的目录(/home)+具体路径文件
+> 在location中使用alias，路径为 root定义的目录(/home)+具体路径文件
+
 
 
 #### 假设我想通过/alias访问 /home/root/index.html这个文件我应该怎么做?
