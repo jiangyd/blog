@@ -5,7 +5,7 @@ tags:
  - rm
 ---
 
-### rm -rf 删除太多文件失败问题
+### 某目录下有10多万个小文件，rm 无法删除
 
 ```
 root@3ac80f67141a:/autotest/test/reports/allure-results# ls -l|wc -l
