@@ -25,7 +25,7 @@ mysql> select * from jj where name='端口';
 ERROR 1267 (HY000): Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='
 ```
 
-> 以上错误是第一次见，但估计与字符编码有关系,查看表结构发现字典name的编码为latin1
+> 以上错误是第一次见，但估计与字符编码有关系,查看表结构发现字段name的编码为latin1
 
 ```
 mysql> show create table jj;

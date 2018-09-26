@@ -7,6 +7,19 @@ tags:
 
 > 创建数据库,注意数据库加上反撇号,不然有些带横杠的会被认为是减号，如test-de会创建不成功
 
+> 加上反撇号的还有一层用意,使用mysql中的关键字命名不会报错
+
+```
+mysql> create database create;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create' at line 1
+mysql> create database crtest;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create database `create`;
+Query OK, 1 row affected (0.00 sec)
+```
+
+
 ```
 mysql> create database  `testdb` default character set utf8 default collate utf8_general_ci;
 Query OK, 1 row affected (0.00 sec)
