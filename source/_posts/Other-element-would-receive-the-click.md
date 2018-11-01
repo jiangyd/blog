@@ -39,16 +39,28 @@ ght" class="app-footer wrapper b-t bg-light ng-scope" aria-hidden="false">
 
 想一想怎么解决,我目前有几个思路
 
-1. 通过执行js脚本(webdriverio提供了该方法)给div增加隐藏样式
+1. 通过执行js脚本(webdriverio提供了该方法)给div增加隐藏样式,这样它就没发挡住我要点击的按钮了
 
 ```
 browser.execute('var ele=document.getElementsByClassName("app-footer wrapper b-t bg-light ng-scope");ele[0].setAttribute("style","display:none");')
 ```
 
-2. 操作滚动条到底部(该脚本有的页面可以滚到低，有的页面滚动条没有反应)
+2. 操作滚动条到底部(当前页面无法操作滚动条，原因待确认，此办法用不了)
 
 ```
 window.scrollTo(0,document.body.scrollHeight)
 ```
 
-3. 通过js直接点击a链接
+3. 我们最终的目的是点击那个按钮，那么我们可以直接通过js直接点击a链接 (通过$定位元素，有ID直接传ID，没有ID传css selector也行)
+
+```
+browser.execute('$("#apply-content > div > div > div > div > div > step.ng-scope.ng-isolate-scope.ng-hide > div:nth-child(2) > step-content > div > form > div.step-content-footer > div > div > a:nth-child(2)")[0].click()')
+```
+
+4. 通过scollIntoView,滚动文档。使该元素出现在窗口的顶部或底部。
+
+```
+
+
+browser.execute('$("#apply-content > div > div > div > div > div > step:nth-child(4) > div:nth-child(2) > step-content.step-content-region.ng-scope.ng-isolate-scope > div > form > div.step-content-footer > div > div > a:nth-child(2)")[0].scrollIntoView()')
+```
