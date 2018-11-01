@@ -126,7 +126,29 @@ easy-rsa  keys  server.conf  update-resolv-conf
 配置server.conf(#,; 开头的都是注释)
 
 ```
-
+port 1194
+proto tcp
+dev tun
+ca /etc/openvpn/keys/ca.crt
+cert /etc/openvpn/keys/server.crt
+key /etc/openvpn/keys/server.key  # This file should be kept secret
+dh /etc/openvpn/keys/dh2048.pem
+server 10.8.0.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+push "route 172.16.0.0 255.255.255.0"
+push "dhcp-option DNS 172.16.0.244"
+client-to-client
+keepalive 10 120
+comp-lzo
+user nobody
+group nogroup
+persist-key
+persist-tun
+status openvpn-status.log
+verb 3
+plugin /etc/openvpn/openvpn-plugin-auth-pam.so openvpn_mysql
+client-cert-not-required
+username-as-common-name
 
 ```
 

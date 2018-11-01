@@ -34,3 +34,11 @@ log status.log
 host 127.0.0.1
 log status.log
 ```
+
+如果还要排除空行，注释呢
+
+-E ^$(正则中表示空) 
+
+```
+grep -Ev "^$|^[#;]" ser.conf
+```
