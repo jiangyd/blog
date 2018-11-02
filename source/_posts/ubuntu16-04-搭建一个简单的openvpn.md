@@ -21,6 +21,10 @@ Release:	16.04
 Codename:	xenial
 ```
 
+内网IP： 172.16.0.52
+外网IP： 47.98.39.141
+
+
 安装
 
 ```
@@ -32,7 +36,7 @@ apt install easy-rsa
 
 ```
 
-创建目录(如果目录不存在就不需要创建)
+创建目录(如果目录存在就不需要创建)
 
 ```
 mkdir /etc/openvpn
@@ -47,7 +51,7 @@ mkdir /etc/openvpn
 # cp -r /usr/share/easy-rsa /etc/openvpn/
 ```
 
-配置 (国家，省，城市，组织，邮件，单位)
+配置 (国家，省，城市，组织，邮件，单位)，vars文件存在就编辑以下配置，不存在则新建
 
 ```
 # cd /etc/openvpn/easy-rsa/
@@ -70,7 +74,7 @@ NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/
 #一路按回车 
 # ./build-ca
 
-#一路按回车 还有2个y确认
+#生成服务端证书,一路按回车 还有2个y确认
 # ./build-key-server server
 
 #为客户端生成证书和私钥 一路按回车，还有2个y确认
@@ -114,6 +118,7 @@ total 112
 -rw------- 1 root root  636 Oct 29 16:30 ta.key
 ```
 
+解压服务端配置例子，拷贝到/etc/openvpn目录下
 ```
 # gzip -d /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz
 # cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf /etc/openvpn/
@@ -123,7 +128,7 @@ easy-rsa  keys  server.conf  update-resolv-conf
 ```
 
 
-配置server.conf(#,; 开头的都是注释)
+配置server.conf(# ; 开头的都是注释)
 
 ```
 port 1194
@@ -133,11 +138,11 @@ ca /etc/openvpn/keys/ca.crt
 cert /etc/openvpn/keys/server.crt
 key /etc/openvpn/keys/server.key  # This file should be kept secret
 dh /etc/openvpn/keys/dh2048.pem
-server 10.8.0.0 255.255.255.0
+server 10.8.0.0 255.255.255.0  ＃给客户端分配的IP地址段
 ifconfig-pool-persist ipp.txt
-push "route 172.16.0.0 255.255.255.0"
-push "dhcp-option DNS 172.16.0.244"
-client-to-client
+push "route 172.16.0.0 255.255.255.0" #允许客户端访问内部IP段 
+push "dhcp-option DNS 172.16.0.244"  ＃给客户端分配的dns
+client-to-client   ＃允许客户端相互访问
 keepalive 10 120
 comp-lzo
 user nobody
@@ -147,7 +152,7 @@ persist-tun
 status openvpn-status.log
 verb 3
 plugin /etc/openvpn/openvpn-plugin-auth-pam.so openvpn_mysql
-client-cert-not-required
+client-cert-not-required  #客户端可以不用证实认证，不然就需要把./build-key client1生成的client1.crt证书也拷贝到客户端
 username-as-common-name
 
 ```
@@ -318,7 +323,7 @@ iptables-save > /etc/iptables/iptables.conf
 
 
 
-客户端配置例子
+客户端配置例子,ca.crt证书需要从服务器上拷贝下来
 
 ```
 client
@@ -395,9 +400,10 @@ IPv4 路由表
 
 ```
 
-这个就是可以ping通10.8.0.1, 在第二行多一条纪录 
+这个就是可以ping通10.8.0.1, 多了两条纪录 
 
 10.8.0.0    255.255.255.0         10.8.0.5         10.8.0.6     20
+172.16.0.0    255.255.255.0         10.8.0.5         10.8.0.6     20
 
 ```
 IPv4 路由表

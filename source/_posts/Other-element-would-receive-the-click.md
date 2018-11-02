@@ -51,6 +51,12 @@ browser.execute('var ele=document.getElementsByClassName("app-footer wrapper b-t
 window.scrollTo(0,document.body.scrollHeight)
 ```
 
+但是这个document.body.scrollTop，在当前页面可以用, 滚动到距离顶部100像素的位置(设置垂直滚动条位置)
+
+```
+document.body.scrollTop=100
+```
+
 3. 我们最终的目的是点击那个按钮，那么我们可以直接通过js直接点击a链接 (通过$定位元素，有ID直接传ID，没有ID传css selector也行)
 
 ```
