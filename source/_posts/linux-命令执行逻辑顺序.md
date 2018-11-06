@@ -131,3 +131,20 @@ No command 'lll' found, did you mean:
 lll: command not found
 
 ```
+
+
+一个知道命令执行成功的应用场景
+
+```
+# ls && echo yes || echo no
+11.txt  c.sh                      ifconfig              install-v2.x.sh  ls.txt  storm
+2.sh    d.sql                     install-3.0.1-198.sh  log              rm
+a.txt   go1.10.windows-amd64.msi  install.sh            ls               rmc
+yes
+
+
+# ppp && echo yes || echo no
+No command 'ppp' found, but there are 19 similar ones
+ppp: command not found
+no
+```
