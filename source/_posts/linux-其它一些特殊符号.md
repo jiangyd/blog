@@ -1,5 +1,5 @@
 ---
-title: linux 其它一些特殊符合
+title: linux 其它一些特殊符号
 date: 2018-11-06 17:49:43
 tags:
 	- linux
